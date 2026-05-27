@@ -1,98 +1,127 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+import {
+    BellDot,
+    CarFront,
+    CircleDollarSign,
+    Download,
+    Send,
+    ShoppingCart,
+    Wallet,
+} from "lucide-react-native";
+import { Image, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+export default function Home() {
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
+    <SafeAreaView className="p-4 rounded-lg">
+      <View className="flex-row items-center justify-between">
+        <View className="bg-green-600 p-4 rounded-lg">
+          <Text className="text-2xl font-bold text-white">$2,589.50</Text>
+          <Text className="text-sm text-white">Available Balance</Text>
+        </View>
+        <View className="flex-row items-center justify-between">
+          <View className=" p-4 rounded-lg">
+            <BellDot size={24} color="red" />
+          </View>
+          <View className="border-2 border-white rounded-full">
+            <Image
+              source={require("@/assets/images/pisey.jpg")}
+              className="w-10 h-10 rounded-full"
+            />
+          </View>
+        </View>
+      </View>
+      <View className="flex-row items-center justify-between">
+        <View className=" flex-row items-center justify-between bg-red-600 p-4 rounded-lg">
+          <View className="bg-red-600 p-4 rounded-lg">
+            <Send size={24} color="white" />
+            <Text className="text-md font-bold text-white">Send</Text>
+          </View>
+          <View className="bg-red-600 p-4 rounded-lg">
+            <Download size={24} color="white" />
+            <Text className="text-md font-bold text-white">Request</Text>
+          </View>
+          <View className="bg-red-600 p-4 rounded-lg">
+            <CircleDollarSign size={24} color="white" />
+            <Text className="text-md font-bold text-white">Loan</Text>
+          </View>
+          <View className="bg-red-600 p-4 rounded-lg">
+            <Wallet size={24} color="white" />
+            <Text className="text-md font-bold text-white">Topup</Text>
+          </View>
+        </View>
+      </View>
+      <View className="flex-row items-center justify-between">
+        <View className=" flex-row items-center justify-between bg-red-600 p-4 rounded-lg">
+          <View className="bg-red-600 p-4 rounded-lg flex-row items-center justify-between">
+            <Text className="text-lg font-bold text-white">
+              Recent Transactions
+            </Text>
+            <Text className="text-sm text-white">See all</Text>
+          </View>
+        </View>
+      </View>
+      <View className="flex-row items-center justify-between">
+        <View className="bg-red-600 p-4 rounded-lg">
+          <Download size={24} color="white" />
+          <Text className="text-md font-bold text-white">All</Text>
+        </View>
+        <View className="bg-red-600 p-4 rounded-lg">
+          <CircleDollarSign size={24} color="white" />
+          <Text className="text-md font-bold text-white">Income</Text>
+        </View>
+        <View className="bg-red-600 p-4 rounded-lg">
+          <Wallet size={24} color="white" />
+          <Text className="text-md font-bold text-white">Expense</Text>
+        </View>
+      </View>
+
+      <View className="flex-row items-center justify-between">
+        <Text className="text-lg font-bold text-gray-500">TODAY</Text>
+      </View>
+
+      <View className="flex-row items-center justify-between border-2 border-white">
+        <View className=" p-4 gap-4 rounded-lg flex-row items-center justify-between">
+          <ShoppingCart size={35} color="blue" />
+          <View className="flex-col items-start justify-center">
+            <Text className="text-md font-bold text-black ">Grocery</Text>
+            <Text className="text-sm text-gray-500">Eataly downtown</Text>
+          </View>
+        </View>
+        <View className="p-4 rounded-lg">
+          <Text className="text-md font-bold text-black">-$50.68</Text>
+          <Text className="text-sm text-gray-500">Aug 26</Text>
+        </View>
+      </View>
+      <View className="flex-row items-center justify-between border-2 border-white">
+        <View className=" p-4 gap-4 rounded-lg flex-row items-center justify-between">
+          <CarFront size={35} color="blue" />
+          <View className="flex-col items-start justify-center">
+            <Text className="text-md font-bold text-black ">Transport</Text>
+            <Text className="text-sm text-gray-500">UBER Pool</Text>
+          </View>
+        </View>
+        <View className="p-4 rounded-lg">
+          <Text className="text-md font-bold text-black">-$5.00</Text>
+          <Text className="text-sm text-gray-500">Aug 26</Text>
+        </View>
+      </View>
+
+      <View className="flex-row items-center justify-between">
+        <Text className="text-lg font-bold text-gray-500">YESTERDAY</Text>
+      </View>
+
+      <View className="flex-row items-center justify-between border-2 border-white">
+        <View className=" p-4 gap-4 rounded-lg flex-row items-center justify-between">
+          <Wallet size={35} color="green" />
+          <View className="flex-col items-start justify-center">
+            <Text className="text-md font-bold text-black ">Payment</Text>
+            <Text className="text-sm text-gray-500">Payment from Piseyrio</Text>
+          </View>
+        </View>
+        <View className="p-4 rounded-lg">
+          <Text className="text-md font-bold text-green-500">+$564.00</Text>
+          <Text className="text-sm text-gray-500">Aug 25</Text>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
-
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  safeArea: {
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
-  },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
-  },
-  title: {
-    textAlign: 'center',
-  },
-  code: {
-    textTransform: 'uppercase',
-  },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
-  },
-});
