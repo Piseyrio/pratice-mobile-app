@@ -1,3 +1,4 @@
+import { Wallet } from "lucide-react-native";
 import { useState } from "react";
 import { Text, TextInput, View } from "react-native";
 
@@ -9,12 +10,21 @@ export default function Add() {
   const [cvv, setCvv] = useState("");
 
   return (
-    <View className="flex-1 bg-white p-4 pt-safe">
-      <View>
-        <Text>Your Cards</Text>
-        <View className="h-2.5 w-2.5 rounded-full bg-black" />
-        <View className="h-2.5 w-2.5 rounded-full bg-black  " />
-        <View className="h-2.5 w-2.5 rounded-full bg-black" />
+    <View className="flex-1 bg-white p-4 pt-safe ">
+      <View className="flex-row items-center justify-between">
+        <View className="flex-row items-center justify-between">
+          <Text className="text-2xl font-bold text-black ">Your Cards</Text>
+        </View>
+        <View className="flex-row items-center justify-end gap-0.5">
+          <View className="h-1.5 w-1.5 rounded-full bg-black" />
+          <View className="h-1.5 w-1.5 rounded-full bg-black" />
+          <View className="h-1.5 w-1.5 rounded-full bg-black" />
+        </View>
+      </View>
+      <View className="mb-4">
+        <Text className="text-sm text-gray-500">
+          2 physical card, 1 virtual card
+        </Text>
       </View>
       <View className="mb-6 items-center">
         <View className="h-[220px] w-full max-w-[360px] overflow-hidden rounded-3xl bg-[#0A56D8] px-6 py-5">
@@ -119,6 +129,33 @@ export default function Add() {
               secureTextEntry
               className="rounded-xl border border-slate-300 px-3 py-3 text-slate-900"
             />
+          </View>
+        </View>
+        <View className="flex-row items-center justify-between">
+          <Text className="text-sm text-gray-500">Add Card</Text>
+          <Text className="text-sm text-blue-600">See all</Text>
+        </View>
+        <View className="flex-row items-center justify-between">
+          <View className=" border rounded-xl border-red-200 mb-4">
+            <View className="flex-row items-center justify-between">
+              <View className=" p-4 gap-4 rounded-lg flex-row ">
+                <View className="bg-gray-200 p-2 rounded-xl">
+                  <Wallet size={30} color="green" />
+                </View>
+                <View className="flex-col items-start justify-center">
+                  <Text className="text-md font-bold text-black ">Payment</Text>
+                  <Text className="text-sm text-gray-500">
+                    Payment from Piseyrio
+                  </Text>
+                </View>
+              </View>
+              <View className="p-4 rounded-lg">
+                <Text className="text-md font-bold text-green-500">
+                  +$564.00
+                </Text>
+                <Text className="text-sm text-gray-500">Aug 25</Text>
+              </View>
+            </View>
           </View>
         </View>
       </View>

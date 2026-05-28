@@ -31,7 +31,7 @@ export default function Home() {
           </View>
         </View>
         <View className="">
-          <View className=" flex-row justify-between items-center p-4 rounded-lg">
+          <View className=" flex-row justify-between items-center rounded-lg">
             <View className=" p-4 rounded-lg items-center gap-4 justify-center">
               <View className="bg-white p-4 rounded-2xl">
                 <Send size={28} color="blue" />
