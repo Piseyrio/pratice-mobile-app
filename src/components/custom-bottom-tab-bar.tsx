@@ -1,11 +1,11 @@
 import type { BottomTabBarProps } from "expo-router/build/react-navigation/bottom-tabs";
 import {
-  Home,
-  LayoutGrid,
-  Plus,
-  Settings,
-  Wallet,
-  type LucideIcon,
+    Home,
+    LayoutGrid,
+    Plus,
+    Settings,
+    Wallet,
+    type LucideIcon,
 } from "lucide-react-native";
 import { Pressable, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -13,7 +13,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 const ACTIVE = "#1b0058";
 const INACTIVE = "#a8a3b3";
 
-const TAB_ORDER = ["index", "history", "add", "categories", "profile"] as const;
+const TAB_ORDER = ["home", "transact", "add", "categories", "profile"] as const;
 
 type TabRouteName = (typeof TAB_ORDER)[number];
 
@@ -21,8 +21,8 @@ const TAB_CONFIG: Record<
   TabRouteName,
   { label: string; icon: LucideIcon; isFab?: boolean }
 > = {
-  index: { label: "HOME", icon: Home },
-  history: { label: "TRANSACT", icon: Wallet },
+  home: { label: "HOME", icon: Home },
+  transact: { label: "TRANSACT", icon: Wallet },
   add: { label: "ADD", icon: Plus, isFab: true },
   categories: { label: "CATEGORIES", icon: LayoutGrid },
   profile: { label: "SETTINGS", icon: Settings },

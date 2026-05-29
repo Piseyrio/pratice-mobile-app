@@ -1,20 +1,20 @@
 import {
-  ArrowLeftRight,
-  BadgeCheck,
-  BarChart3,
-  Calendar,
-  ChevronRight,
-  ChevronUp,
-  CircleDollarSign,
-  CirclePlus,
-  Download,
-  Eye,
-  FileText,
-  Send,
-  Share2,
-  Table,
-  Trash2,
-  Wallet,
+    ArrowLeftRight,
+    BadgeCheck,
+    BarChart3,
+    Calendar,
+    ChevronRight,
+    ChevronUp,
+    CircleDollarSign,
+    CirclePlus,
+    Download,
+    Eye,
+    FileText,
+    Send,
+    Share2,
+    Table,
+    Trash2,
+    Wallet,
 } from "lucide-react-native";
 import { useState } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
@@ -101,7 +101,9 @@ function InvoiceCard({
       <View className="flex-row items-start justify-between">
         <View className="gap-1">
           <SectionLabel>Invoice ID</SectionLabel>
-          <Text className="text-sm font-medium text-[#171c24]">{invoiceId}</Text>
+          <Text className="text-sm font-medium text-[#171c24]">
+            {invoiceId}
+          </Text>
         </View>
         <View
           className={`rounded px-2.5 py-1 ${isPending ? "bg-amber-100" : "bg-green-100"}`}
@@ -171,7 +173,7 @@ function ExportChip({
   );
 }
 
-export default function History() {
+export default function Transact() {
   const [selectedMonth, setSelectedMonth] = useState<string>("May 2026");
 
   return (
@@ -426,8 +428,8 @@ export default function History() {
                       Paid:{" "}
                       <Text className="font-semibold">{teacher.paid}</Text> |
                       Pending:{" "}
-                      <Text className="font-semibold">{teacher.pending}</Text>{" "}
-                      | ChargePaid:{" "}
+                      <Text className="font-semibold">{teacher.pending}</Text> |
+                      ChargePaid:{" "}
                       <Text className="font-semibold text-[#1b0058]">
                         {teacher.chargePaid}
                       </Text>

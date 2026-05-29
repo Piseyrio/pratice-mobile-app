@@ -1,33 +1,33 @@
 import { Image } from "expo-image";
-import {
-  Badge,
-  BarChart3,
-  Bell,
-  BookOpen,
-  Calendar,
-  ClipboardCheck,
-  GraduationCap,
-  Receipt,
-  School,
-  TrendingUp,
-  UserPlus,
-  Users,
-  UserX,
-  type LucideIcon,
-} from "lucide-react-native";
-import { useState, type ReactNode } from "react";
 import { router } from "expo-router";
 import {
-  Pressable,
-  ScrollView,
-  Text,
-  View,
-  type LayoutChangeEvent,
+    Badge,
+    BarChart3,
+    Bell,
+    BookOpen,
+    Calendar,
+    ClipboardCheck,
+    GraduationCap,
+    Receipt,
+    School,
+    TrendingUp,
+    UserPlus,
+    Users,
+    UserX,
+    type LucideIcon,
+} from "lucide-react-native";
+import { useState, type ReactNode } from "react";
+import {
+    Pressable,
+    ScrollView,
+    Text,
+    View,
+    type LayoutChangeEvent,
 } from "react-native";
 
 import { FORM_ROUTES } from "@/constants/joy-school";
-import Svg, { Circle } from "react-native-svg";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Svg, { Circle } from "react-native-svg";
 
 const PRIMARY = "#1b0058";
 const PRIMARY_CONTAINER = "#30008f";
@@ -46,7 +46,14 @@ const PROFILE_IMAGE =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuAEfU7fM_EiuVjDPdjk-WjagtUX3hXmFv71AsIfu7Yv8RXUkaOFRpIj-PQeRueJnvVgF94ZYM4KKaB9Yrjs93DSkEYsapnJgkIAWW7i1T1HVUgpIL5iYfC9QFue9ItqNW7fWmaM9zvnlo2LXV35rJAl6bUs4errszhtxaEy1oFn34hasQR-_jfydVjrb4Z0GjOc1kbg4gD6RC7X7RYqPL4YhS_T2IwOUPmJomXJTuEqgYsD8SabzCsD0hB_tHtg4q2BUBvml8_rgW9S";
 
 const QUICK_SUMMARY = [
-  { id: "subjects", label: "Subjects", count: 12, icon: BookOpen, tint: PRIMARY, bg: `${PRIMARY}1a` },
+  {
+    id: "subjects",
+    label: "Subjects",
+    count: 12,
+    icon: BookOpen,
+    tint: PRIMARY,
+    bg: `${PRIMARY}1a`,
+  },
   {
     id: "classes",
     label: "Classes",
@@ -66,7 +73,13 @@ const QUICK_SUMMARY = [
 ] as const;
 
 const QUICK_ACTIONS = [
-  { id: "student", label: "Add Student", icon: UserPlus, tint: PRIMARY, bg: `${PRIMARY}1a` },
+  {
+    id: "student",
+    label: "Add Student",
+    icon: UserPlus,
+    tint: PRIMARY,
+    bg: `${PRIMARY}1a`,
+  },
   {
     id: "attendance",
     label: "Mark Attendance",
@@ -145,7 +158,9 @@ function FrozenSlab({
     <View
       className={`overflow-hidden rounded-2xl border border-white/80 bg-white/80 shadow-sm ${className}`}
       style={{
-        backgroundColor: elevated ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.8)",
+        backgroundColor: elevated
+          ? "rgba(255,255,255,0.95)"
+          : "rgba(255,255,255,0.8)",
         shadowColor: "#002850",
         shadowOffset: { width: 0, height: elevated ? 8 : 4 },
         shadowOpacity: elevated ? 0.08 : 0.05,
@@ -167,7 +182,9 @@ function SegmentedControl<T extends string>({
   value: T;
   onChange: (v: T) => void;
 }) {
-  const [layouts, setLayouts] = useState<Record<string, { x: number; width: number }>>({});
+  const [layouts, setLayouts] = useState<
+    Record<string, { x: number; width: number }>
+  >({});
 
   const activeLayout = layouts[value];
 
@@ -249,7 +266,9 @@ function CircularProgress({ percentage }: { percentage: number }) {
         />
       </Svg>
       <View className="h-12 w-12 items-center justify-center rounded-full bg-white">
-        <Text className="text-[10px] font-black text-[#1b0058]">{percentage}%</Text>
+        <Text className="text-[10px] font-black text-[#1b0058]">
+          {percentage}%
+        </Text>
       </View>
     </View>
   );
@@ -299,14 +318,21 @@ function QuickSummaryRow({
       >
         <Icon size={20} color={tint} />
       </View>
-      <Text className="flex-1 text-base font-medium text-[#171c24]">{label}</Text>
-      <View className="rounded-full px-2.5 py-0.5" style={{ backgroundColor: bg }}>
+      <Text className="flex-1 text-base font-medium text-[#171c24]">
+        {label}
+      </Text>
+      <View
+        className="rounded-full px-2.5 py-0.5"
+        style={{ backgroundColor: bg }}
+      >
         <Text className="text-sm font-bold" style={{ color: tint }}>
           {count}
         </Text>
       </View>
       <Pressable className="active:opacity-70">
-        <Text className="text-xs font-semibold uppercase tracking-wide text-[#1b0058]">Open</Text>
+        <Text className="text-xs font-semibold uppercase tracking-wide text-[#1b0058]">
+          Open
+        </Text>
       </Pressable>
     </View>
   );
@@ -325,18 +351,26 @@ function TeacherCard({
     <FrozenSlab className="gap-4 p-5">
       <View>
         <Text className="text-base font-semibold text-[#1b0058]">{name}</Text>
-        <Text className="text-[11px] text-[#484553]">{students} Students Total</Text>
+        <Text className="text-[11px] text-[#484553]">
+          {students} Students Total
+        </Text>
       </View>
       <View className="gap-2">
         <View>
-          <Text className="text-[10px] font-bold uppercase text-[#484553]">Motor Status</Text>
+          <Text className="text-[10px] font-bold uppercase text-[#484553]">
+            Motor Status
+          </Text>
           <Text className="text-sm text-[#171c24]">
-            <Text className="font-semibold text-green-600">{motorYes}</Text> Have motor |{" "}
-            <Text className="font-semibold text-[#484553]">{motorNo}</Text> No motor
+            <Text className="font-semibold text-green-600">{motorYes}</Text>{" "}
+            Have motor |{" "}
+            <Text className="font-semibold text-[#484553]">{motorNo}</Text> No
+            motor
           </Text>
         </View>
         <View>
-          <Text className="text-[10px] font-bold uppercase text-[#484553]">Payments</Text>
+          <Text className="text-[10px] font-bold uppercase text-[#484553]">
+            Payments
+          </Text>
           <Text className="text-sm text-[#171c24]">
             Paid: <Text className="font-semibold">{paid}</Text> | Pending:{" "}
             <Text className="font-semibold">{pending}</Text> | ChargePaid:{" "}
@@ -373,8 +407,13 @@ function ActiveOverview() {
             </View>
             <View className="flex-row items-center justify-between">
               <View className="flex-row items-center gap-2">
-                <View className="h-2 w-2 rounded-full" style={{ backgroundColor: TERTIARY_CONTAINER }} />
-                <Text className="text-sm font-medium text-[#484553]">Female</Text>
+                <View
+                  className="h-2 w-2 rounded-full"
+                  style={{ backgroundColor: TERTIARY_CONTAINER }}
+                />
+                <Text className="text-sm font-medium text-[#484553]">
+                  Female
+                </Text>
               </View>
               <Text className="text-sm font-bold text-[#171c24]">702</Text>
             </View>
@@ -419,14 +458,24 @@ function ActiveOverview() {
             </Text>
             <Text className="text-xl font-bold text-[#171c24]">$12,450</Text>
           </View>
-          <Text className="mb-1 text-xs font-bold text-[#005eb1]">85% Goal</Text>
+          <Text className="mb-1 text-xs font-bold text-[#005eb1]">
+            85% Goal
+          </Text>
         </View>
-        <View className="h-3 overflow-hidden rounded-full" style={{ backgroundColor: SURFACE_CONTAINER }}>
-          <View className="h-full rounded-full bg-[#1b0058]" style={{ width: "85%" }} />
+        <View
+          className="h-3 overflow-hidden rounded-full"
+          style={{ backgroundColor: SURFACE_CONTAINER }}
+        >
+          <View
+            className="h-full rounded-full bg-[#1b0058]"
+            style={{ width: "85%" }}
+          />
         </View>
         <View className="flex-row items-center gap-1">
           <TrendingUp size={14} color={ON_SURFACE_VARIANT} />
-          <Text className="text-[10px] text-[#484553]">12% increase from yesterday</Text>
+          <Text className="text-[10px] text-[#484553]">
+            12% increase from yesterday
+          </Text>
         </View>
       </View>
     </View>
@@ -448,7 +497,9 @@ function InactiveOverview() {
             Archived Records
           </Text>
           <Text className="text-3xl font-black text-[#171c24]">158</Text>
-          <Text className="mt-2 text-xs text-[#484553]">Staff and student exits</Text>
+          <Text className="mt-2 text-xs text-[#484553]">
+            Staff and student exits
+          </Text>
         </View>
       </View>
 
@@ -460,7 +511,9 @@ function InactiveOverview() {
             borderColor: `${OUTLINE_VARIANT}33`,
           }}
         >
-          <Text className="mb-1 text-[10px] font-bold uppercase text-[#484553]">Graduated</Text>
+          <Text className="mb-1 text-[10px] font-bold uppercase text-[#484553]">
+            Graduated
+          </Text>
           <Text className="text-xl font-bold text-[#171c24]">156</Text>
           <Text className="text-[10px] text-[#484553]">Class of 2023</Text>
         </View>
@@ -471,7 +524,9 @@ function InactiveOverview() {
             borderColor: `${OUTLINE_VARIANT}33`,
           }}
         >
-          <Text className="mb-1 text-[10px] font-bold uppercase text-[#484553]">Suspended</Text>
+          <Text className="mb-1 text-[10px] font-bold uppercase text-[#484553]">
+            Suspended
+          </Text>
           <Text className="text-xl font-bold text-[#ba1a1a]">2</Text>
           <Text className="text-[10px] text-[#ba1a1a]">Pending Review</Text>
         </View>
@@ -482,21 +537,33 @@ function InactiveOverview() {
 
 export default function Home() {
   const [overview, setOverview] = useState<"active" | "inactive">("active");
-  const [attendancePeriod, setAttendancePeriod] = useState<"week" | "month" | "year">("week");
+  const [attendancePeriod, setAttendancePeriod] = useState<
+    "week" | "month" | "year"
+  >("week");
 
   return (
-    <SafeAreaView className="flex-1" style={{ backgroundColor: BACKGROUND }} edges={["top"]}>
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: BACKGROUND }}
+      edges={["top"]}
+    >
       <View className="flex-row items-center justify-between border-b border-white/20 bg-white/80 px-4 py-3 shadow-sm">
         <View className="flex-row items-center gap-3">
           <School size={24} color={PRIMARY} />
-          <Text className="text-2xl font-semibold tracking-tight text-[#1b0058]">Joy School</Text>
+          <Text className="text-2xl font-semibold tracking-tight text-[#1b0058]">
+            Joy School
+          </Text>
         </View>
         <View className="flex-row items-center gap-4">
           <Pressable className="rounded-full p-2 active:opacity-70">
             <Bell size={24} color={ON_SURFACE_VARIANT} />
           </Pressable>
           <View className="h-10 w-10 overflow-hidden rounded-full border-2 border-[#1b0058]/20">
-            <Image source={{ uri: PROFILE_IMAGE }} className="h-full w-full" contentFit="cover" />
+            <Image
+              source={{ uri: PROFILE_IMAGE }}
+              className="h-full w-full"
+              contentFit="cover"
+            />
           </View>
         </View>
       </View>
@@ -525,7 +592,9 @@ export default function Home() {
 
         <View className="mb-10">
           <FrozenSlab elevated className="gap-8 rounded-[2rem] p-6">
-            <Text className="text-xl font-semibold text-[#171c24]">School Overview</Text>
+            <Text className="text-xl font-semibold text-[#171c24]">
+              School Overview
+            </Text>
             {overview === "active" ? <ActiveOverview /> : <InactiveOverview />}
           </FrozenSlab>
         </View>
@@ -557,7 +626,8 @@ export default function Home() {
                   key={action.id}
                   className="h-28 min-w-[110px] shrink-0 active:opacity-90"
                   onPress={() => {
-                    if (action.id === "student") router.push(FORM_ROUTES.student);
+                    if (action.id === "student")
+                      router.push(FORM_ROUTES.student);
                   }}
                 >
                   <FrozenSlab className="h-full items-center justify-center gap-2 p-3">
@@ -593,7 +663,10 @@ export default function Home() {
                 onChange={setAttendancePeriod}
               />
             </View>
-            <View className="relative flex-row items-end gap-2 px-2" style={{ height: CHART_HEIGHT + 24 }}>
+            <View
+              className="relative flex-row items-end gap-2 px-2"
+              style={{ height: CHART_HEIGHT + 24 }}
+            >
               {ATTENDANCE_BARS.map((bar) => (
                 <View
                   key={bar.day}
@@ -604,7 +677,9 @@ export default function Home() {
                     className="w-full rounded-t-lg bg-[#2f038e]"
                     style={{ height: bar.height * CHART_HEIGHT }}
                   />
-                  <Text className="text-[10px] font-bold uppercase text-[#484553]">{bar.day}</Text>
+                  <Text className="text-[10px] font-bold uppercase text-[#484553]">
+                    {bar.day}
+                  </Text>
                 </View>
               ))}
               <View className="pointer-events-none absolute inset-0 justify-between py-1">
@@ -614,7 +689,9 @@ export default function Home() {
                     className="w-full border-t border-dashed pt-1"
                     style={{ borderColor: `${OUTLINE_VARIANT}4d` }}
                   >
-                    <Text className="text-[10px] text-[#484553]/50">{label}</Text>
+                    <Text className="text-[10px] text-[#484553]/50">
+                      {label}
+                    </Text>
                   </View>
                 ))}
               </View>
@@ -624,7 +701,9 @@ export default function Home() {
 
         <View className="mb-10">
           <FrozenSlab className="p-6">
-            <Text className="mb-4 text-xl font-semibold text-[#171c24]">Teacher Breakdown</Text>
+            <Text className="mb-4 text-xl font-semibold text-[#171c24]">
+              Teacher Breakdown
+            </Text>
             <View className="gap-4">
               {TEACHERS.map((teacher) => (
                 <TeacherCard key={teacher.name} {...teacher} />
@@ -646,8 +725,12 @@ export default function Home() {
               <Text className="mb-3 text-[10px] font-bold uppercase tracking-widest text-[#1b0058]">
                 Grand Total Breakdown
               </Text>
-              <Text className="text-2xl font-bold text-[#1b0058]">5 Students Total (All)</Text>
-              <Text className="text-sm text-[#484553]">Consolidated overview</Text>
+              <Text className="text-2xl font-bold text-[#1b0058]">
+                5 Students Total (All)
+              </Text>
+              <Text className="text-sm text-[#484553]">
+                Consolidated overview
+              </Text>
               <View className="mt-4 gap-4">
                 <View className="border-l-2 border-[#1b0058]/10 pl-4">
                   <Text className="text-[10px] font-bold uppercase text-[#484553]">
@@ -662,14 +745,19 @@ export default function Home() {
                   <Text className="text-[10px] font-bold uppercase text-[#484553]">
                     Total ChargePaid
                   </Text>
-                  <Text className="text-lg font-semibold text-[#1b0058]">$13.00</Text>
+                  <Text className="text-lg font-semibold text-[#1b0058]">
+                    $13.00
+                  </Text>
                 </View>
               </View>
             </View>
 
             <View
               className="mt-8 rounded-xl border p-4"
-              style={{ backgroundColor: `${PRIMARY}0d`, borderColor: `${PRIMARY}1a` }}
+              style={{
+                backgroundColor: `${PRIMARY}0d`,
+                borderColor: `${PRIMARY}1a`,
+              }}
             >
               <Text className="mb-4 text-[11px] font-medium text-[#1b0058]">
                 Cash Flow (7 days)
