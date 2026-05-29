@@ -21,6 +21,7 @@ export default function TabLayout() {
           <Tabs.Screen name="add" options={{ title: "Add" }} />
           <Tabs.Screen name="categories" options={{ title: "Categories" }} />
           <Tabs.Screen name="profile" options={{ title: "Settings" }} />
+          <Tabs.Screen name="forms" options={{ href: null }} />
         </Tabs>
       </ThemeProvider>
     </SafeAreaProvider>

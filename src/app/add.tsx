@@ -1,7 +1,9 @@
 import { Image } from "expo-image";
+import { router } from "expo-router";
 import {
   BookMarked,
   BookOpen,
+  Calendar,
   CalendarSync,
   ClipboardCheck,
   Copy,
@@ -16,6 +18,8 @@ import {
 } from "lucide-react-native";
 import { type ReactNode } from "react";
 import { Pressable, ScrollView, Text, View } from "react-native";
+
+import { FORM_ROUTES } from "@/constants/joy-school";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const PRIMARY = "#1b0058";
@@ -45,6 +49,14 @@ type ActionCard = {
   categoryColor: string;
   wide?: boolean;
   badge?: string;
+  href?: string;
+};
+
+const FORM_ACTION_ROUTES: Record<string, string> = {
+  student: FORM_ROUTES.student,
+  class: FORM_ROUTES.class,
+  subject: FORM_ROUTES.subject,
+  schedule: FORM_ROUTES.schedule,
 };
 
 const BENTO_ACTIONS: ActionCard[] = [
@@ -56,6 +68,7 @@ const BENTO_ACTIONS: ActionCard[] = [
     iconBg: PRIMARY_FIXED,
     iconColor: PRIMARY,
     categoryColor: PRIMARY,
+    href: FORM_ROUTES.student,
   },
   {
     id: "teacher",
@@ -104,6 +117,7 @@ const BENTO_ACTIONS: ActionCard[] = [
     iconBg: SURFACE_CONTAINER_HIGH,
     iconColor: ON_SURFACE_VARIANT,
     categoryColor: ON_SURFACE_VARIANT,
+    href: FORM_ROUTES.class,
   },
   {
     id: "subject",
@@ -113,6 +127,17 @@ const BENTO_ACTIONS: ActionCard[] = [
     iconBg: SURFACE_CONTAINER_HIGH,
     iconColor: ON_SURFACE_VARIANT,
     categoryColor: ON_SURFACE_VARIANT,
+    href: FORM_ROUTES.subject,
+  },
+  {
+    id: "schedule",
+    category: "TIMETABLE",
+    title: "New Schedule",
+    icon: Calendar,
+    iconBg: TERTIARY_FIXED,
+    iconColor: TERTIARY,
+    categoryColor: TERTIARY,
+    href: FORM_ROUTES.schedule,
   },
 ];
 
@@ -204,11 +229,14 @@ function FrozenSlab({
 
 function ActionBentoCard({ action }: { action: ActionCard }) {
   const Icon = action.icon;
+  const href = action.href ?? FORM_ACTION_ROUTES[action.id];
 
   return (
     <Pressable
       className={`active:opacity-90 ${action.wide ? "w-full" : "w-[48%]"}`}
-      onPress={() => {}}
+      onPress={() => {
+        if (href) router.push(href as never);
+      }}
     >
       <FrozenSlab className={`gap-3 p-4 ${action.wide ? "" : "min-h-[140px]"}`}>
         {action.wide ? (

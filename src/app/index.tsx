@@ -16,6 +16,7 @@ import {
   type LucideIcon,
 } from "lucide-react-native";
 import { useState, type ReactNode } from "react";
+import { router } from "expo-router";
 import {
   Pressable,
   ScrollView,
@@ -23,6 +24,8 @@ import {
   View,
   type LayoutChangeEvent,
 } from "react-native";
+
+import { FORM_ROUTES } from "@/constants/joy-school";
 import Svg, { Circle } from "react-native-svg";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -553,7 +556,9 @@ export default function Home() {
                 <Pressable
                   key={action.id}
                   className="h-28 min-w-[110px] shrink-0 active:opacity-90"
-                  onPress={() => {}}
+                  onPress={() => {
+                    if (action.id === "student") router.push(FORM_ROUTES.student);
+                  }}
                 >
                   <FrozenSlab className="h-full items-center justify-center gap-2 p-3">
                     <View

@@ -1,0 +1,30 @@
+export const JoySchoolColors = {
+  primary: "#1b0058",
+  primaryFixed: "#e7deff",
+  primaryContainer: "#30008f",
+  surfaceTint: "#6425ff",
+  secondary: "#005eb1",
+  secondaryFixed: "#d5e3ff",
+  secondaryContainer: "#69a7ff",
+  onSecondaryContainer: "#003b74",
+  tertiary: "#6a5f00",
+  tertiaryFixed: "#f6e472",
+  tertiaryContainer: "#bcac41",
+  error: "#ba1a1a",
+  onSurface: "#171c24",
+  onSurfaceVariant: "#484553",
+  outlineVariant: "#cac4d5",
+  background: "#f9f9ff",
+  surfaceContainer: "#eaedfa",
+  surfaceContainerLow: "#f1f3ff",
+  surfaceContainerHigh: "#e5e8f4",
+  surfaceContainerHighest: "#dfe2ef",
+  onPrimary: "#ffffff",
+} as const;
+
+export const FORM_ROUTES = {
+  student: "/forms/student",
+  class: "/forms/class",
+  subject: "/forms/subject",
+  schedule: "/forms/schedule",
+} as const;
